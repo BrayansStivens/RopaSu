@@ -7,7 +7,7 @@ use RopaSu
 create table lote(
 	
 	codigo varchar(10) primary key,
-	cardinalidad varchar(30)
+	proceso int
 );
 
 create table prendas(
@@ -42,11 +42,18 @@ create table empleado(
 
 create table operario(
 	ocupacion varchar(30),
-	codigoEmpleado varchar(10) foreign key references empleado(codigo)
+	codigoEmpleado varchar(10) foreign key references empleado(codigo) primary key
 );
 
 create table supervisor(
-	ocupacion varchar(30),
-	codigoEmpleado varchar(10) foreign key references empleado(codigo)
+	codLote varchar(10) foreign key references lote(codigo),
+	codigoEmpleado varchar(10) foreign key references empleado(codigo) primary key
 );
 
+
+create table loteOperador(
+	codLote varchar(10) foreign key references lote(codigo),
+	codigoEmpleado varchar(10) foreign key references operario (codigoEmpleado)
+
+	primary key(codLote, codigoEmpleado)
+);

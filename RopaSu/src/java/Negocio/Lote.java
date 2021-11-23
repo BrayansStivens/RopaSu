@@ -4,9 +4,10 @@ package Negocio;
 
 public class Lote {
     
-    private String prenda, codigo, proceso;
+    private String prenda, codigo;
+    private int proceso;
 
-    public Lote(String prenda, String codigo, String proceso) {
+    public Lote(String prenda, String codigo, int proceso) {
         this.prenda = prenda;
         this.codigo = codigo;
         this.proceso = proceso;
@@ -28,11 +29,11 @@ public class Lote {
         this.codigo = codigo;
     }
 
-    public String getProceso() {
+    public int getProceso() {
         return proceso;
     }
 
-    public void setProceso(String proceso) {
+    public void setProceso(int proceso) {
         this.proceso = proceso;
     }
     
