@@ -13,7 +13,7 @@
     </head>
     <body>
          <div class="form">
-            <form action="supervisor" method="get">
+            <form action="operario" method="get">
                 <label for="code">Código: </label>
                 <input name="code" type="text" placeholder="Código"><br>
                 <label for="name">Nombre: </label>

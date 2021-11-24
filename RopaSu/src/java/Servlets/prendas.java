@@ -5,23 +5,21 @@
  */
 package Servlets;
 
-import Dato.Conexion;
+import Negocio.Prendas;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author braya
  */
-@WebServlet(name = "supervisor", urlPatterns = {"/supervisor"})
-public class supervisor extends HttpServlet {
+@WebServlet(name = "prendas", urlPatterns = {"/prendas"})
+public class prendas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +34,45 @@ public class supervisor extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           
-           Conexion objC = new Conexion();
-           String nombre = request.getParameter("name");
-           String apellido = request.getParameter("lastname");
-           String jornada = request.getParameter("work_day");
-           
-           RequestDispatcher rd;
-           rd= request.getRequestDispatcher("/mostrar.jsp");
-           rd.forward(request, response);
+            
+           String codigo = request.getParameter("code").toString();
+            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet prendas</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            
+            if(request.getParameter("btnSendI")!=null){
+                
+                boolean r =false;
+                
+                String nombre = request.getParameter("name").toString();
+                String classi = request.getParameter("class").toString();
+                String lote = request.getParameter("lot").toString();
+                String tiempo = request.getParameter("time").toString();
+                int cantidad = Integer.parseInt(request.getParameter("amounts").toString());
+            
+                Prendas objP = new Prendas(codigo, nombre, classi, tiempo, cantidad);
+                
+                r= objP.insertar();
+                
+                if(r=true){
+                    out.println("<h1>Ingresado con exito: "  +nombre+ "</h1>");
+                }else{
+                    out.println("<h1>Ingresado sin exito: "  +nombre+ "</h1>");
+                }
+                
+            }
+            if(request.getParameter("btnSendC")!=null){
+                
+                out.println("<h1>Consultar "  + codigo + "</h1>");
+            }
+            
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

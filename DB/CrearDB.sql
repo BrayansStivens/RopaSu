@@ -15,10 +15,7 @@ create table prendas(
 	codigo varchar(10) primary key,
 	nombre varchar(30),
 	cantidad int,
-	stock int,
-	costo money,
-	estado varchar(20),
-	precio money,
+	clasi varchar(30),
 	codigoLote varchar(10) foreign key references lote(codigo)
 );
 
@@ -33,6 +30,11 @@ create table materia_prima(
 	codigoPrenda varchar(10) foreign key references prendas(codigo),
 	codigoProeevedor varchar(10) foreign key references proeevedor(codigo)
 );
+
+	insert into lote values('A1',1);
+	insert into lote values('A2',2);
+
+	insert into prendas values('0B1','Blusa',50,'Lujo','A1');
 
 create table empleado(
 	codigo varchar(10) primary key,

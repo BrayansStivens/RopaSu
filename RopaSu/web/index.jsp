@@ -12,9 +12,9 @@
             
             <img src="https://img.icons8.com/dotty/80/000000/button.png"/>
             <h1 id="title">SU ROPA</h1>            
-            <a href="supervisor.jsp"><button id="btnSupervisor">SUPERVISORES</button></a>
+            <a href="Pages/supervisor.jsp"><button id="btnSupervisor">SUPERVISORES</button></a>
             <br>
-            <a href="operario.jsp"><button id="btnoperario">OPERARIOS</button></a>
+            <a href="Pages/operario.jsp"><button id="btnoperario">OPERARIOS</button></a>
             
         </header>
     </body>

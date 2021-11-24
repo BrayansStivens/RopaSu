@@ -14,8 +14,8 @@ public class Conexion {
     
     public Conexion(){
         
-        bd="Almacen";
-        dsn="jdbc:sqlserver://localhost;databaseName=" + bd + ";user=sa;password=Je123456";
+        bd="RopaSu";
+        dsn="jdbc:sqlserver://localhost:1433;databaseName=" + bd + ";user=Su_Ropa;password=suropaitm";
         
     }
     
@@ -68,23 +68,23 @@ public class Conexion {
     }
     
     
-    public boolean InsertarBD(String ced, String nom){
+    public boolean InsertarBD(String codigo, String nombre, int cant, String classi, String lot ){
         
         try{
             
             int filaguardada;
             
-           /*s = cn.createStatement();
+           s = cn.createStatement();
            
-           filaguardada = s.executeUpdate("Insert into Cliente values('" + ced + "', '" + nom + "')");*/
+           filaguardada = s.executeUpdate("Insert into prendas values('" + codigo + "', '" + nombre + "', '"+ cant + "', '"  + classi +  "', '" + lot + "')");
             
             
-          cstmt = cn.prepareCall("{call insertar('" + ced + "', '" + nom + "')}");
+//          cstmt = cn.prepareCall("{call insertar()}");
             
             
-          filaguardada = cstmt.executeUpdate();
+//          filaguardada = cstmt.executeUpdate();
           
-           
+          
            
            if (filaguardada == 1){
                

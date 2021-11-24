@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Negocio.Cliente"%>
+
 <!DOCTYPE html>
 <html>
     <head>
