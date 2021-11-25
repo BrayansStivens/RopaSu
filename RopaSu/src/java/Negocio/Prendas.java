@@ -21,6 +21,7 @@ public class Prendas {
         this.cantidad = cantidad;
     }
 
+    
     public String getCodigo() {
         return codigo;
     }
@@ -62,17 +63,18 @@ public class Prendas {
     }
 
    
-        public boolean insertar(){
+    public boolean insertar(){
         
-        boolean respuesta;
+       boolean respuesta;
         
-        Conexion co = new Conexion();
+       Conexion co = new Conexion();
         
-        co.abrirConexion();
-        respuesta = co.InsertarBD(codigo,nombre,cantidad,clasificacion,"A1");
-        co.cerrarConexion();
+       co.abrirConexion();
+       respuesta = co.InsertarBD(codigo,nombre,cantidad,clasificacion,"A1");
+       co.cerrarConexion();
         
-        return respuesta;
-        
+       return respuesta;   
     }
+    
+   
 }
