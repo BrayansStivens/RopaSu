@@ -9,19 +9,27 @@ import Dato.Conexion;
 
 
 public class negocioPrendas {
-    
+//Atributos
     private String codigo, nombre, clasificacion, tiempo;
     private int cantidad;
-
-    public negocioPrendas(String codigo, String nombre, String clasificacion, String tiempo, int cantidad) {
+    private double precio;
+//Constructores
+    public negocioPrendas(String codigo, String nombre, String clasificacion, String tiempo, int cantidad, double precio) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.clasificacion = clasificacion;
         this.tiempo = tiempo;
         this.cantidad = cantidad;
+        this.precio = precio;
     }
 
+    public negocioPrendas() {
+    }
     
+    public negocioPrendas(String codigo){
+        this.codigo = codigo;
+    }
+//Setters and Getters
     public String getCodigo() {
         return codigo;
     }
@@ -62,19 +70,43 @@ public class negocioPrendas {
         this.cantidad = cantidad;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
    
-    public boolean insertar(){
+
+   
+    public boolean insertar(String lote){
         
        boolean respuesta;
         
        Conexion co = new Conexion();
         
        co.abrirConexion();
-       respuesta = co.InsertarP(codigo,nombre,cantidad,clasificacion,"A1");
+       respuesta = co.InsertarP(codigo,nombre,cantidad,clasificacion,tiempo,precio,lote);
        co.cerrarConexion();
         
        return respuesta;   
     }
     
-   
+    public void consultar(){
+        
+        Conexion co = new Conexion();
+        negocioPrendas P;
+        co.abrirConexion();
+        P= co.ConsultarP(codigo);
+        co.cerrarConexion();
+        
+        nombre = P.getNombre();
+        cantidad = P.getCantidad();
+        clasificacion = P.getClasificacion();
+        tiempo = P.getTiempo();
+        precio = P.getPrecio();
+
+    }
 }

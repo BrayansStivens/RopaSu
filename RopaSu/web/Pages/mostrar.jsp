@@ -12,6 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Soy la pagina de mostrar no ve? gonorreaa</h1>
+        <div class="container">
+
+            <div class="titulo">Resultado Consulta</div>
+            <h3> Coddigo: objP.getCodigo() </h3>
+            <h3> Nombre: objP.getNombre() </h3>
+            <h3> Cantidad: objP.getCantidad() </h3>
+            <h3> Precio: objP.getPrecio() </h3>
+            <h3>  Clasificacion: objP.getClasificacion() </h3>
+        </div>
     </body>
 </html>

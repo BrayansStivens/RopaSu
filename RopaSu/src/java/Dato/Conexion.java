@@ -1,120 +1,166 @@
 package Dato;
 
+import Negocio.negocioLote;
+import Negocio.negocioPrendas;
 import java.sql.*;
 
 public class Conexion {
-    
+
     private String bd;
     private String dsn;
     private Connection cn;
     private Statement s;
     private ResultSet rs;
     private CallableStatement cstmt;
-    
-    
-    public Conexion(){
-        
-        bd="RopaSu";
-        dsn="jdbc:sqlserver://localhost:1433;databaseName=" + bd + ";user=Su_Ropa;password=suropaitm";
-        
+
+    public Conexion() {
+
+        bd = "RopaSu";
+        dsn = "jdbc:sqlserver://localhost:1433;databaseName=" + bd + ";user=Su_Ropa;password=suropaitm";
+
     }
-    
-    public void abrirConexion(){
-        
-        try{
-            
+
+    public void abrirConexion() {
+
+        try {
+
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            cn= DriverManager.getConnection(dsn);
-            
-        
-        
-        }catch(Exception ex){
-            
+            cn = DriverManager.getConnection(dsn);
+
+        } catch (Exception ex) {
+
             System.out.println("Error: " + ex.getMessage());
-            
+
         }
-        
-        
+
     }
-    
-    
-    public String ConsultarBD(String ced){
-        
-        try{
-        
-        /*s = cn.createStatement();
-        
-        rs = s.executeQuery ("select nombre from Cliente where cedula = " + ced);*/
+
+    public negocioPrendas ConsultarP(String codigo) {
+
+        try {
+
+            s = cn.createStatement();
+            negocioPrendas objP;
+
+            rs = s.executeQuery("select * from prendas where codigo = " + "'" + codigo + "'");
+
+            rs.next();
+            String c = rs.getString("codigo");
+            String n = rs.getString("nombre");
+            int can = rs.getInt("cantidad");
+            String cla = rs.getString("clasi");
+            String t = rs.getString("tiempo");
+            double p = rs.getDouble("precio");
+
+            objP = new negocioPrendas(c, n, cla, t, can, p);
+
+            s.close();
+            rs.close();
             
-            
-       cstmt = cn.prepareCall("{call consultar('" + ced + "')}");
-       
-       rs = cstmt.executeQuery();
-            
-        
-        rs.next();
-        
-        
-        return rs.getString(1);
-        
-        
-        
-        
-        }catch(Exception ex){
-            
+            return objP;
+
+        } catch (Exception ex) {
+
             return null;
-            
+
         }
     }
-    
-    
-    public boolean InsertarP(String codigo, String nombre, int cant, String classi, String lot ){
-        
-        try{
-            
+
+    public boolean InsertarP(String codigo, String nombre, int cant, String classi, String tiempo, double precio, String lot) {
+
+        try {
+
             int filaguardada;
-            
-           s = cn.createStatement();
-           
-           filaguardada = s.executeUpdate("Insert into prendas values('" + codigo + "', '" + nombre + "', '"+ cant + "', '"  + classi +  "', '" + lot + "')");
-   
-           if (filaguardada == 1){
-               
-               return true;
-               
-           }else{
-               
-               return false;
-           }
-            
-            
-            
-        }catch(Exception ex){
-            
+
+            s = cn.createStatement();
+
+            filaguardada = s.executeUpdate("Insert into prendas values('" + codigo + "', '" + nombre + "', '" + cant + "', '" + classi + "', '" + tiempo + "', '" + precio + "', '" + lot + "')");
+
+            if (filaguardada == 1) {
+
+                return true;
+
+            } else {
+
+                return false;
+            }
+
+        } catch (Exception ex) {
+
             return false;
-            
+
         }
-        
+
     }
     
-   
-    public void ActualizarP(String tiempo){
-        
-    }
-    
-    public void cerrarConexion(){
-        
-        try{
+        public negocioLote ConsultarL(String codigo) {
+
+        try {
+
+            s = cn.createStatement();
+            negocioLote objL;
+
+            rs = s.executeQuery("select * from lote where codigo = " + "'" + codigo + "'");
+
+            rs.next();
+            String c = rs.getString("codigo");
+            int can = rs.getInt("proceso");
+            objL = new negocioLote(c,can);
+
+            s.close();
+            rs.close();
             
-           cn.close();
-            
-        }catch(Exception e){
-            
-            System.out.println("Error: "+ e.getMessage());
+            return objL;
+
+        } catch (Exception ex) {
+
+            return null;
+
         }
-        
-        
     }
-    
-    
+        
+        public boolean InsertarL(String codigo, int proceso) {
+
+        try {
+
+            int filaguardada;
+
+            s = cn.createStatement();
+
+            filaguardada = s.executeUpdate("Insert into lote  values('" + codigo + "', '" + proceso + "')");
+
+            if (filaguardada == 1) {
+
+                return true;
+
+            } else {
+
+                return false;
+            }
+
+        } catch (Exception ex) {
+
+            return false;
+
+        }
+
+    }
+
+    public void ActualizarP(String tiempo) {
+
+    }
+
+    public void cerrarConexion() {
+
+        try {
+
+            cn.close();
+
+        } catch (Exception e) {
+
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
+
 }

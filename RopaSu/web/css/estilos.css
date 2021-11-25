@@ -1,0 +1,120 @@
+
+*, *:before,*:after{
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.link-color{
+  
+    color : #31014B;
+}
+.body_registro{
+
+    justify-content: center;
+    height: 100vh;
+    padding: 10px;
+    align-items: center;
+    background: linear-gradient(135deg, #31014B, #f8f9fa, #31014B); 
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    background: #f4f4f4;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .titulo {
+    font-size:25px;
+    font-weight:500;
+    position: relative;
+}
+
+.container .titulo::before{
+    content: '';
+    position:absolute;
+    left:0;
+    bottom:0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg,  #f8f9fa, #31014B, #f8f9fa); 
+}
+
+.container #form-registro .detalles-usuario{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+#form-registro .detalles-usuario .input_box{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.detalles-usuario .input_box input{
+    height: 45px;
+    width:100%;
+    outline: none;
+    border: 1px solid #ccc;
+    border: radius 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all .5s ease;
+}
+
+.detalles-usuario .input_box input:focus
+{
+    border-color: #433e40;
+}
+
+
+
+#btn-submit-form{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight:500;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: linear-gradient(100deg, #faf7e6, #31014B );  
+    cursor:pointer;
+}
+
+#btn-submit-form:hover{
+    background: linear-gradient(135deg,  #31014B, #faf7e6); 
+
+}
+
+
+@media (max-width : 584px){
+    .container{
+        max-width: 100%;
+    }
+    #form-registro .detalles-usuario .input_box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .detalles-usuario .genero-detalles{
+        margin: 20px 0 12px 0;
+        width: 100%;
+    }
+    form .genero-detalles .categoria{
+        width: 100%;
+    }
+    .container #form-registro .detalles-usuario{
+        max-height: 300px;
+        overflow: scroll;
+    }
+    .detalles-usuario::-webkit-scrollbar{
+        width: 0;
+    }
+}
+

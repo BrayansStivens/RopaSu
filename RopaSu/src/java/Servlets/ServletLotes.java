@@ -5,7 +5,7 @@
  */
 package Servlets;
 
-import Negocio.negocioPrendas;
+import Negocio.negocioLote;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author braya
  */
-@WebServlet(name = "ServletPrendas", urlPatterns = {"/ServletPrendas"})
-public class ServletPrendas extends HttpServlet {
+@WebServlet(name = "ServletLotes", urlPatterns = {"/ServletLotes"})
+public class ServletLotes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +34,6 @@ public class ServletPrendas extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             String codigo = request.getParameter("code").toString();
 
             /* TODO output your page here. You may use following sample code. */
@@ -51,32 +50,26 @@ public class ServletPrendas extends HttpServlet {
             out.println("<link rel=\"stylesheet\" href=\"./css/estilos.css\">");
             out.println("</head>");
             out.println("<body class=\"body_registro\">");
-
             if (request.getParameter("btnSendI") != null) {
 
                 boolean r = false;
 
-                String nombre = request.getParameter("name").toString();
-                String classi = request.getParameter("class").toString();
-                String lote = request.getParameter("lot").toString();
-                String tiempo = request.getParameter("time").toString();
-                double precio = Double.parseDouble(request.getParameter("price").toString());
-                int cantidad = Integer.parseInt(request.getParameter("amounts").toString());
+                int proceso = Integer.parseInt(request.getParameter("process").toString());
 
-                negocioPrendas objP = new negocioPrendas(codigo, nombre, classi, tiempo, cantidad, precio);
+                negocioLote objL = new negocioLote(codigo, proceso);
 
-                r = objP.insertar(lote);
+                r = objL.insertar();
 
                 if (r = true) {
                     out.println("<div class=\"container\">\n"
                             + "\n"
-                            + "            <div class=\"titulo\">Se agrego correctamente: "+nombre+"</div>\n"
+                            + "            <div class=\"titulo\">Se agrego correctamente: "+codigo+"</div>\n"
                             + "            <a href=\"./Pages/prendas.jsp\" class=\"link-color\">Volver</a>\n"
                             + "        </div>");
                 } else {
                     out.println("<div class=\"container\">\n"
                             + "\n"
-                            + "            <div class=\"titulo\">No se agrego correctamente: "+nombre+"</div>\n"
+                            + "            <div class=\"titulo\">No se agrego correctamente: "+codigo+"</div>\n"
                             + "            <a href=\"./Pages/prendas.jsp\" class=\"link-color\">Volver</a>\n"
                             + "        </div>");
                 }
@@ -84,28 +77,17 @@ public class ServletPrendas extends HttpServlet {
             }
             if (request.getParameter("btnSendC") != null) {
 
-                negocioPrendas objP = new negocioPrendas(codigo);
-                objP.consultar();
+                negocioLote objL = new negocioLote(codigo);
+                objL.consultar();
                 out.println("<br><br>");
                 out.println("<div class=\"container\">\n"
                         + "\n"
                         + "            <div class=\"titulo\">Resultado Consulta</div>\n"
-                        + "            <br><h3> Codigo: " + objP.getCodigo() + " </h3>\n"
-                        + "            <h3> Nombre: " + objP.getNombre() + "</h3>\n"
-                        + "            <h3> Cantidad: " + objP.getCantidad() + " </h3>\n"
-                        + "            <h3> Precio: " + objP.getPrecio() + "</h3>\n"
-                        + "            <h3>  Clasificacion: " + objP.getClasificacion() + "</h3>\n"
-                        + "             <a href=\"./Pages/prendas.jsp\" class=\"link-color\" >Volver</a>"
+                        + "            <br><h3> Codigo: " + objL.getCodigo() + " </h3>\n"
+                        + "            <h3> Proceso: " + objL.getProceso() + "</h3>\n"
+                        + "             <a href=\"./Pages/lote.jsp\" class=\"link-color\" >Volver</a>"
                         + "        </div>");
 
-            }
-            if (request.getParameter("btnSendT") != null) {
-                String tiempo = request.getParameter("time").toString();
-                out.println("<h1>Actualizado Tiempo de " + "</h1>");
-            }
-            if (request.getParameter("btnSendP") != null) {
-
-                out.println("<h1>Actualizado Precio de " + "</h1>");
             }
 
             out.println("</body>");
