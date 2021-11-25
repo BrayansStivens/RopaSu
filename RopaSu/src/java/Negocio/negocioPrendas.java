@@ -8,12 +8,12 @@ package Negocio;
 import Dato.Conexion;
 
 
-public class Prendas {
+public class negocioPrendas {
     
     private String codigo, nombre, clasificacion, tiempo;
     private int cantidad;
 
-    public Prendas(String codigo, String nombre, String clasificacion, String tiempo, int cantidad) {
+    public negocioPrendas(String codigo, String nombre, String clasificacion, String tiempo, int cantidad) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.clasificacion = clasificacion;
@@ -70,7 +70,7 @@ public class Prendas {
        Conexion co = new Conexion();
         
        co.abrirConexion();
-       respuesta = co.InsertarBD(codigo,nombre,cantidad,clasificacion,"A1");
+       respuesta = co.InsertarP(codigo,nombre,cantidad,clasificacion,"A1");
        co.cerrarConexion();
         
        return respuesta;   

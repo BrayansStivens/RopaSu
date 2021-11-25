@@ -2,21 +2,23 @@
 package Negocio;
 
 
-public class Empleado {
+public class negocioEmpleado {
     
     //Atributos
     
-    protected String codigo, nombre, apellido;
+    private String codigo, nombre, apellido, ocupacion, tipo;
     
     //Constructores
 
-    public Empleado() {
+    public negocioEmpleado() {
     }
-
-    public Empleado(String codigo, String nombre, String apellido) {
+    
+       public negocioEmpleado(String codigo, String nombre, String apellido, String ocupacion, String tipo) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.ocupacion = ocupacion;
+        this.tipo = tipo;
     }
     
     //Getters and Settes
@@ -44,6 +46,28 @@ public class Empleado {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    public String getOcupacion() {
+        return ocupacion;
+    }
+
+    public void setOcupacion(String ocupacion) {
+        this.ocupacion = ocupacion;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+       
+    //Metodos
+    
+    
+ 
+
     
     
 }

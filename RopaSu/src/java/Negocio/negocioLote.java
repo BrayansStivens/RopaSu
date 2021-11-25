@@ -2,12 +2,12 @@
 package Negocio;
 
 
-public class Lote {
+public class negocioLote {
     
     private String prenda, codigo;
     private int proceso;
 
-    public Lote(String prenda, String codigo, int proceso) {
+    public negocioLote(String prenda, String codigo, int proceso) {
         this.prenda = prenda;
         this.codigo = codigo;
         this.proceso = proceso;

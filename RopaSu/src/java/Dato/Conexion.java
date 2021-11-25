@@ -68,7 +68,7 @@ public class Conexion {
     }
     
     
-    public boolean InsertarBD(String codigo, String nombre, int cant, String classi, String lot ){
+    public boolean InsertarP(String codigo, String nombre, int cant, String classi, String lot ){
         
         try{
             
@@ -77,15 +77,7 @@ public class Conexion {
            s = cn.createStatement();
            
            filaguardada = s.executeUpdate("Insert into prendas values('" + codigo + "', '" + nombre + "', '"+ cant + "', '"  + classi +  "', '" + lot + "')");
-            
-            
-//          cstmt = cn.prepareCall("{call insertar()}");
-            
-            
-//          filaguardada = cstmt.executeUpdate();
-          
-          
-           
+   
            if (filaguardada == 1){
                
                return true;
@@ -102,6 +94,11 @@ public class Conexion {
             return false;
             
         }
+        
+    }
+    
+   
+    public void ActualizarP(String tiempo){
         
     }
     

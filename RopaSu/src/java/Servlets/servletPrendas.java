@@ -5,7 +5,7 @@
  */
 package Servlets;
 
-import Negocio.Prendas;
+import Negocio.negocioPrendas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author braya
  */
 @WebServlet(name = "prendas", urlPatterns = {"/prendas"})
-public class prendas extends HttpServlet {
+public class servletPrendas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,7 +55,7 @@ public class prendas extends HttpServlet {
                 String tiempo = request.getParameter("time").toString();
                 int cantidad = Integer.parseInt(request.getParameter("amounts").toString());
             
-                Prendas objP = new Prendas(codigo, nombre, classi, tiempo, cantidad);
+                negocioPrendas objP = new negocioPrendas(codigo, nombre, classi, tiempo, cantidad);
                 
                 r= objP.insertar();
                 

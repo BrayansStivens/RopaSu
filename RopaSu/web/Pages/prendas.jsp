@@ -17,6 +17,8 @@
         <br>
         <button id="btnConsultar">Consultar</button>
         <button id="btnIngresar">Ingresar</button>
+        <button id="btnTiempo">Actualizar tiempo</button>
+        <button id="btnPrecio">Actualizar precio venta</button>
         
          <div id="ingresar" style="display: none">
             <form  action="../prendas" method="get" >
@@ -42,6 +44,24 @@
                 <input type="submit" name="btnSendC" value="Consultar">
             </form> 
         </div>
+        
+        <div id="tiempo" style="display: none">
+             <form action="../prendas" method="get">
+                <label for="time">Tiempo: </label>
+                <input name="time" type="text" placeholder="Tiempo"><br>
+                <input type="submit" name="btnSendT" value="Actualizar">
+            </form> 
+        </div>
+        
+         <div id="precio" style="display: none">
+             <form action="../prendas" method="get">
+                <label for="price">Precio: </label>
+                <input name="price" type="text" placeholder="Precio"><br>
+                <input type="submit" name="btnSendP" value="Actualizar">
+            </form> 
+        </div>
+        
+        
            
     </body>
 </html>
