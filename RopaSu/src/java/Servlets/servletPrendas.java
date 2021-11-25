@@ -70,13 +70,13 @@ public class ServletPrendas extends HttpServlet {
                 if (r = true) {
                     out.println("<div class=\"container\">\n"
                             + "\n"
-                            + "            <div class=\"titulo\">Se agrego correctamente: "+nombre+"</div>\n"
+                            + "            <div class=\"titulo\">Se agrego correctamente: " + nombre + "</div>\n"
                             + "            <a href=\"./Pages/prendas.jsp\" class=\"link-color\">Volver</a>\n"
                             + "        </div>");
                 } else {
                     out.println("<div class=\"container\">\n"
                             + "\n"
-                            + "            <div class=\"titulo\">No se agrego correctamente: "+nombre+"</div>\n"
+                            + "            <div class=\"titulo\">No se agrego correctamente: " + nombre + "</div>\n"
                             + "            <a href=\"./Pages/prendas.jsp\" class=\"link-color\">Volver</a>\n"
                             + "        </div>");
                 }
@@ -100,12 +100,28 @@ public class ServletPrendas extends HttpServlet {
 
             }
             if (request.getParameter("btnSendT") != null) {
+                negocioPrendas objP = new negocioPrendas(codigo);
                 String tiempo = request.getParameter("time").toString();
-                out.println("<h1>Actualizado Tiempo de " + "</h1>");
+                objP.actualizarT();
+                out.println("<div class=\"container\">\n"
+                        + "\n"
+                        + "            <div class=\"titulo\">Actualizacion de tiempo correcta</div>\n"
+                        + "            <br><h3> Codigo: " + objP.getCodigo() + " </h3>\n"
+                        + "            <br><h3> Tiempo: " + tiempo + " </h3>\n"
+                        + "             <a href=\"./Pages/prendas.jsp\" class=\"link-color\" >Volver</a>"
+                        + "        </div>");
             }
             if (request.getParameter("btnSendP") != null) {
-
-                out.println("<h1>Actualizado Precio de " + "</h1>");
+                negocioPrendas objP = new negocioPrendas(codigo);
+                double precio = Double.parseDouble(request.getParameter("price").toString());
+                objP.actualizarP();
+                out.println("<div class=\"container\">\n"
+                        + "\n"
+                        + "            <div class=\"titulo\">Actualizacion de precio venta correcta</div>\n"
+                        + "            <br><h3> Codigo: " + objP.getCodigo() + " </h3>\n"
+                        + "            <br><h3> Precio: " + precio + " </h3>\n"
+                        + "             <a href=\"./Pages/prendas.jsp\" class=\"link-color\" >Volver</a>"
+                        + "        </div>");
             }
 
             out.println("</body>");

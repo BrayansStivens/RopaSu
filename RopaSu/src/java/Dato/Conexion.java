@@ -146,8 +146,12 @@ public class Conexion {
 
     }
 
-    public void ActualizarP(String tiempo) {
-
+    public void ActualizarPT(String codigo) {
+        
+    }
+    
+    public void ActualizarPP(String codigo) {
+        
     }
 
     public void cerrarConexion() {

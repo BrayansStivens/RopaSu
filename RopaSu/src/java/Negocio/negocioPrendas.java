@@ -109,4 +109,11 @@ public class negocioPrendas {
         precio = P.getPrecio();
 
     }
+    
+    public void actualizarT(){
+        
+    }
+    public void actualizarP(){
+        
+    }
 }
